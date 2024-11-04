@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:09:40 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:10:00 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:05:52 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_rgb(char **rgb)
 	i = 0;
 	while (rgb[i])
 	{
-		if (!ft_isnum(rgb[i]) || ft_strlen(rgb[i]) > 4)
+		if (!ft_isnum(rgb[i]) || ft_strlen(rgb[i]) > 3)
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 10:32:31 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 15:10:16 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:02:20 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	get_2dmap_info(t_map *map, char *file)
 	int		fd;
 	char	*line;
 	char	*prev_line;
-	// int		i;
 
-	// i = 0;
 	fd = open(file, O_RDONLY);
 	prev_line = NULL;
 	line = get_next_line(fd);

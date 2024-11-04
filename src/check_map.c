@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:56:37 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:11:45 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:03:55 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,13 @@ int	check_open(char *file)
 int	check_name(char *file)
 {
 	int	i;
-	int	count;
 
-	count = 0;
 	i = 0;
 	while (file[i] != '\0')
 	{
-		if (file[i] == '.')
-		{
-			count++;
-			if (count > 1)
-				return (0);
-			if (file[i + 1] == 'c' && file[i + 2] == 'u'
-				&& file[i + 3] == 'b' && file[i + 4] == '\0')
-				return (1);
-			else
-				return (0);
-		}
+		if (file[i + 1] == 'c' && file[i + 2] == 'u'
+			&& file[i + 3] == 'b' && file[i + 4] == '\0')
+			return (1);
 		i++;
 	}
 	return (0);

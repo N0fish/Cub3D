@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:56 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:21:13 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:46:49 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 # define WEST 3
 
 //with valgrind
-// # define MOVE_SPEED 0.0633
-// # define ROTATION_SPEED 0.0633
+# define MOVE_SPEED 0.0633
+# define ROTATION_SPEED 0.0633
 
 //without valgrind
-# define MOVE_SPEED 0.0233
-# define ROTATION_SPEED 0.0233
+// # define MOVE_SPEED 0.0233
+// # define ROTATION_SPEED 0.0233
 
 # define NBR_TEXTURES 4
 # define MARGIN 0.1
