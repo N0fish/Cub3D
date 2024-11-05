@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+         #
+#    By: algultse <algultse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 11:54:39 by roarslan          #+#    #+#              #
-#    Updated: 2024/10/30 16:21:49 by roarslan         ###   ########.fr        #
+#    Updated: 2024/11/05 23:48:11 by algultse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,12 @@ SRC = get_next_line.c get_next_line_utils.c \
 	xpm_to_image.c \
 	movement.c \
 	init.c
+
 MANDATORY_SRC = $(MANDATORYDIR)main.c
 BONUS_SRC = $(BONUSDIR)main_bonus.c
+
 OBJS = $(SRC:%.c=$(OBJDIR)%.o)
+
 MANDATORY_OBJS = $(OBJDIR)main.o
 BONUS_OBJS = $(SRC:%.c=$(OBJDIR)%.o) $(BONUS_SRC:$(BONUSDIR)%.c=$(OBJDIR)%.o)
 

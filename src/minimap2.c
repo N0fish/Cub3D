@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 22:41:33 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/05 23:02:19 by roarslan         ###   ########.fr       */
+/*   Created: 2024/11/05 22:41:33 by algultse          #+#    #+#             */
+/*   Updated: 2024/11/05 23:39:47 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
+// рисует пиксель на экране с цветом, который передаешь
 void	draw_block_pixel(t_data *data, int pixel_x, int pixel_y, int color)
 {
 	char	*dst;
@@ -21,6 +22,7 @@ void	draw_block_pixel(t_data *data, int pixel_x, int pixel_y, int color)
 	*(unsigned int *)dst = color;
 }
 
+// цвет миникарты и рисует одну ячейку, либо черным нарисует, либо белым будет блок
 void	draw_map_cell(t_data *data, t_minimap *minimap, int x, int y)
 {
 	int	i;
@@ -47,6 +49,7 @@ void	draw_map_cell(t_data *data, t_minimap *minimap, int x, int y)
 	}
 }
 
+// рисует все блоки карты, стены и пространство
 void	draw_map_blocks(t_data *data, t_minimap *minimap)
 {
 	int	x;

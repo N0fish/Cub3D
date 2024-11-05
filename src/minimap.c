@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 15:56:22 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/05 20:40:43 by roarslan         ###   ########.fr       */
+/*   Created: 2024/11/05 15:56:20 by algultse          #+#    #+#             */
+/*   Updated: 2024/11/05 23:38:23 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
+// нах-ся ли персонаж в пределах границ
 int	is_within_minimap_bounds(int px, int py, t_minimap *minimap)
 {
 	return ( \
@@ -22,6 +23,7 @@ int	is_within_minimap_bounds(int px, int py, t_minimap *minimap)
 		);
 }
 
+// рисовка игрока (красный кружок)
 void	draw_player_icon(t_data *data, t_minimap *minimap)
 {
 	int	i;
@@ -50,6 +52,7 @@ void	draw_player_icon(t_data *data, t_minimap *minimap)
 	}
 }
 
+// функция чтобы нарисовать миникарту
 void	draw_minimap(t_data *data)
 {
 	t_minimap	minimap;
