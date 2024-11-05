@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/04 13:49:38 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/05 22:55:30 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_render(t_data *data)
 	ft_memset(data->img->img_addr, 0, data->game->sizex
 		* data->game->sizey * (data->img->bits_per_pixel / 8));
 	cast_rays(data);
+	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	return (0);
 }

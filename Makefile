@@ -11,59 +11,73 @@
 # **************************************************************************** #
 
 NAME = cub3D
+NAME_BONUS = $(NAME)
 
 CC = cc
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(MLXDIR) -Imlx_linux
+MLXFLAGS = -L$(MLXDIR) -lmlx -L/usr/lib -I$(MLXDIR) -lXext -lX11 -lm -g3 -lz -ffast-math -O3 -march=nativ
 
-CFLAGS = -Wall -Wextra -Werror
+MLX = ./minilibx-linux/libmlx.a
+MLXDIR = ./minilibx-linux/
+SRCDIR = ./src/
+INCDIR = ./include/
+OBJDIR = ./obj/
+MANDATORYDIR = ./src/
+BONUSDIR = ./bonus/
 
-SRC = src/main.c \
-	src/get_next_line.c \
-	src/get_next_line_utils.c \
-	src/utils.c \
-	src/utils2.c \
-	src/check_map.c \
-	src/check_map2.c \
-	src/assets_check.c \
-	src/textures_check.c \
-	src/textures_color.c \
-	src/check_2dmap.c \
-	src/check_2dmap2.c \
-	src/check_around.c \
-	src/free.c \
-	src/ft_split.c \
-	src/move.c \
-	src/casting.c \
-	src/draw.c \
-	src/xpm_to_image.c \
-	src/movement.c \
-	src/init.c
+SRC = get_next_line.c get_next_line_utils.c \
+	utils.c utils2.c \
+	check_map.c check_map2.c \
+	assets_check.c \
+	textures_check.c textures_color.c \
+	check_2dmap.c check_2dmap2.c \
+	check_around.c \
+	free.c \
+	ft_split.c \
+	move.c \
+	casting.c \
+	draw.c minimap.c minimap2.c \
+	xpm_to_image.c \
+	movement.c \
+	init.c
+MANDATORY_SRC = $(MANDATORYDIR)main.c
+BONUS_SRC = $(BONUSDIR)main_bonus.c
+OBJS = $(SRC:%.c=$(OBJDIR)%.o)
+MANDATORY_OBJS = $(OBJDIR)main.o
+BONUS_OBJS = $(SRC:%.c=$(OBJDIR)%.o) $(BONUS_SRC:$(BONUSDIR)%.c=$(OBJDIR)%.o)
 
-HEADER = includes.h
+all: $(MLX) $(NAME)
 
-MLX = minilibx-linux/libmlx.a \
-      	minilibx-linux/libmlx_Linux.a
+$(NAME): $(OBJS) $(MANDATORY_OBJS)
+	$(CC) $(OBJS) $(MANDATORY_OBJS) $(CFLAGS) $(MLX) $(MLXFLAGS) -o $(NAME)
 
-OBJ_DIR = obj
+bonus: $(MLX) $(BONUS_OBJS)
+	$(CC) $(BONUS_OBJS) $(CFLAGS) $(MLX) $(MLXFLAGS) -o $(NAME_BONUS)
 
-OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
+$(MLX):
+	@make -C $(MLXDIR)
+	@cp $(MLXDIR)libmlx.a $(MLXDIR)libmlx_Linux.a
 
-all: $(NAME)
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(INCDIR) -Imlx_linux -O3 -c $< -o $@
 
-$(NAME): $(OBJ) $(HEADER)
-	make -C minilibx-linux
-	$(CC) $(OBJ) $(CFLAGS) $(MLX) -Lmlx-linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm  -g3 -lz -ffast-math -O3 -march=native -Ofast -o $(NAME)
+$(OBJDIR)main.o: $(MANDATORY_SRC)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(INCDIR) -Imlx_linux -O3 -c $< -o $@
 
-$(OBJ_DIR)/%.o: src/%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -Iusr/include -Imlx_linux -O3 -c $< -o $@
+$(OBJDIR)main_bonus.o: $(BONUS_SRC)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(INCDIR) -Imlx_linux -O3 -c $< -o $@
 
 clean:
-	make clean -C ./minilibx-linux
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJDIR)
+	make clean -C $(MLXDIR)
 
 fclean: clean
+	rm -f $(NAME) $(NAME_BONUS)
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re all valgrind
+.PHONY: all clean fclean re bonus valgrinds

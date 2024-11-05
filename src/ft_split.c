@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	free_mem(char **tofree)
 {

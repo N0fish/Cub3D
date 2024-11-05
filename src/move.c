@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	rotate(t_game *game, int i)
 {

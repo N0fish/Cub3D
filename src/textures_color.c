@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 int	check_rgb(char **rgb)
 {

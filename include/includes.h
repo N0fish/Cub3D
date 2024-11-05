@@ -13,7 +13,7 @@
 #ifndef INCLUDES_H
 # define INCLUDES_H
 
-# include "minilibx-linux/mlx.h"
+# include "mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdio.h>
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include "bonus.h"
 
 # define NORTH 0
 # define SOUTH 1
