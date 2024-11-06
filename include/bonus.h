@@ -15,6 +15,8 @@
 
 # include "includes.h"
 
+# define MOUSE_SENSITIVITY 0.002
+
 typedef struct s_data	t_data;
 
 typedef struct s_minimap

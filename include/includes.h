@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:56 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/04 13:46:49 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:35:30 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_game
 	int		drawend;
 	double	olddirx;
 	double	oldplanex;
+	double	rot_speed;
 	double	wallx;
 	int		texx;
 	int		texy;
