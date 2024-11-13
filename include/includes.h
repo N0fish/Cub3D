@@ -106,6 +106,7 @@ typedef struct s_game
 	int		texy;
 	double	step;
 	double	texpos;
+	double	*zbuffer;
 	t_data	*data;
 }	t_game;
 
@@ -144,12 +145,14 @@ typedef struct s_keys
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	t_map	*map;
-	t_game	*game;
-	t_img	*img;
-	t_keys	keys;
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_game		*game;
+	t_img		*img;
+	t_keys		keys;
+	t_sprite	*sprites;
+	int			num_sprites;
 }	t_data;
 
 //check_map.c

@@ -33,14 +33,18 @@ void	init_structures(t_data *data)
 	data->keys.d = 0;
 	data->keys.left = 0;
 	data->keys.right = 0;
+	data->num_sprites = 0;
 }
+
 
 int	ft_render(t_data *data)
 {
 	handle_movement(data);
 	ft_memset(data->img->img_addr, 0, data->game->sizex
 		* data->game->sizey * (data->img->bits_per_pixel / 8));
+	ft_memset(data->game->zbuffer, 0, sizeof(double) * data->game->sizex);
 	cast_rays(data);
+    draw_sprites(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	return (0);
