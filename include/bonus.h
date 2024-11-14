@@ -91,4 +91,7 @@ void	handle_sprite(char *line, int i, t_map *map);
 char	*ft_strjoin_b(char const *s1, char const *s2);
 char	*ft_itoa(int n);
 
+void	free_sprites(t_data *data);
+void	free_mlx(t_data *data);
+
 #endif

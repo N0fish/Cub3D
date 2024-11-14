@@ -51,32 +51,46 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
+static void	free_map_resources(t_map *map)
+{
+	if (map->floor)
+	{
+		free(map->floor);
+		map->floor = NULL;
+	}
+	if (map->ceiling)
+	{
+		free(map->ceiling);
+		map->ceiling = NULL;
+	}
+	if (map->map2d)
+	{
+		free_tab(map->map2d);
+		map->map2d = NULL;
+	}
+	free_images(map);
+	if (map)
+		free(map);
+	map = NULL;
+}
+
 void	free_and_exit(t_data *data)
 {
-	if (data->map->floor)
-	{
-		free(data->map->floor);
-		data->map->floor = NULL;
-	}
-	if (data->map->ceiling)
-	{
-		free(data->map->ceiling);
-		data->map->ceiling = NULL;
-	}
-	if (data->map->map2d)
-	{
-		free_tab(data->map->map2d);
-		data->map->map2d = NULL;
-	}
-	free_images(data->map);
 	if (data->map)
-		free(data->map);
-	data->map = NULL;
+		free_map_resources(data->map);
 	if (data->game)
+	{
 		free(data->game);
-	data->game = NULL;
+		data->game = NULL;
+	}
 	if (data->img)
+	{
 		free(data->img);
+		data->img = NULL;
+	}
+	free_sprites(data);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 	exit(EXIT_SUCCESS);
 }
 
@@ -104,8 +118,6 @@ int	ft_escape(t_data *data)
 	ft_destroy_img(data);
 	if (data->img->img_addr)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
 	free_and_exit(data);
 	return (0);
 }

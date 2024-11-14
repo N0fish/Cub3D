@@ -17,6 +17,8 @@ void	draw_block_pixel(t_data *data, int pixel_x, int pixel_y, int color)
 {
 	char	*dst;
 
+	if (!data)
+		return ;
 	dst = data->img->img_addr + (pixel_y * data->img->line_length \
 			+ pixel_x * (data->img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
@@ -31,6 +33,8 @@ void	draw_map_cell(t_data *data, t_minimap *minimap, int x, int y)
 	int	pixel_y;
 	int	color;
 
+	if (!data || !minimap)
+		return ;
 	color = 0x000000;
 	if (data->map->map2d[y][x] == '1')
 		color = 0xFFFFFF;
@@ -55,6 +59,8 @@ void	draw_map_blocks(t_data *data, t_minimap *minimap)
 	int	x;
 	int	y;
 
+	if (!data || !minimap)
+		return ;
 	y = 0;
 	while (y < data->map->size)
 	{

@@ -55,7 +55,7 @@ static void	load_sprite_texture(t_data *data, int sprite_index, int frame_index)
 
 static void	allocate_sprites_array(t_data *data)
 {
-	data->sprites = malloc(sizeof(t_sprite) * NUM_SPRITES);
+	data->sprites = (t_sprite *)malloc(sizeof(t_sprite) * NUM_SPRITES);
 	if (!data->sprites)
 	{
 		ft_putstr_fd("Error\nFailed to allocate memory for sprites\n", 2);
@@ -83,7 +83,7 @@ static void	initialize_sprite(t_data *data, int index)
 
 void init_sprites(t_data *data)
 {
-	int i = 0;
+	int	i;
 
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -92,6 +92,7 @@ void init_sprites(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	allocate_sprites_array(data);
+	i = 0;
 	while (i < NUM_SPRITES)
 	{
 		initialize_sprite(data, i);

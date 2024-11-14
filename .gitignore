@@ -1,3 +1,6 @@
 .vscode
 obj/
+obj_bonus/
 .DS_Store
+cub3D
+bonus_built

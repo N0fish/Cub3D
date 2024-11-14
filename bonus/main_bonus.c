@@ -76,9 +76,9 @@ int	mouse_move(int x, int y, t_data *data)
 
 int	launch_game(t_data *data)
 {
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return (ft_putstr_fd("Error\nMLX fail\n", 2), free_and_exit(data), 0);
+	// data->mlx = mlx_init();
+	// if (!data->mlx)
+	// 	return (ft_putstr_fd("Error\nMLX fail\n", 2), free_and_exit(data), 0);
 	mlx_get_screen_size(data->mlx, &data->game->sizex, &data->game->sizey);
 	ft_xpm_to_image(data);
 	player_init(data);
@@ -96,8 +96,8 @@ int	launch_game(t_data *data)
 	mlx_hook(data->win, KeyPress, KeyPressMask, &ft_keypress, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_keyrelease, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_escape, data);
-	mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, data->game->sizey / 2);
-	mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
+	// mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, data->game->sizey / 2);
+	// mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
 	// mlx_mouse_hide(data->mlx, data->win); //leaks
 	mlx_loop_hook(data->mlx, &ft_render, data);
 	mlx_loop(data->mlx);
@@ -116,5 +116,6 @@ int	main(int ac, char **av)
 	}
 	else
 		ft_putstr_fd("Error\nWrong arguents\n", STDERR_FILENO);
+	// free_and_exit(&data);
 	return (0);
 }

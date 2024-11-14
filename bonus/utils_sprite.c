@@ -52,6 +52,41 @@ char	*ft_strjoin_b(char const *s1, char const *s2)
 	return (p_dest);
 }
 
+void	free_sprites(t_data *data)
+{
+	int	i;
+	int	j;
+
+	if (!data)
+		return ;
+	if (data->sprites)
+	{
+		i = 0;
+		while(i < data->num_sprites)
+		{
+			if (data->sprites[i].textures)
+			{
+				j = 0;
+				while (j < data->sprites[i].num_frames)
+				{
+					if (data->sprites[i].textures[j])
+					{
+						mlx_destroy_image(data->mlx, \
+							data->sprites[i].textures[j]);
+						data->sprites[i].textures[j] = NULL;
+					}
+					j++;
+				}
+				free(data->sprites[i].textures);
+				data->sprites[i].textures = NULL;
+			}
+			i++;
+		}
+		free(data->sprites);
+		data->sprites = NULL;
+	}
+}
+
 /*
 void update_sprites(t_data *data)
 {

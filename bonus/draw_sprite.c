@@ -77,8 +77,9 @@ void	draw_sprites(t_data *data)
 	t_sprite			*sprite;
 	int					stripe;
 
-	if (data->num_sprites == 0)
+	if (!data || data->num_sprites == 0)
 		return ;
+	ft_memset(&tdata, 0, sizeof(t_sprite_transform));
 	sprite = &data->sprites[0];
 	calculate_sprite_transform(data, sprite, &tdata);
 	if (tdata.transformY <= 0)
