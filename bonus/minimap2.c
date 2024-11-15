@@ -38,6 +38,8 @@ void	draw_map_cell(t_data *data, t_minimap *minimap, int x, int y)
 	color = 0x000000;
 	if (data->map->map2d[y][x] == '1')
 		color = 0xFFFFFF;
+	else if (data->map->map2d[y][x] == 'X')
+		color = 0x0000FF;
 	i = 0;
 	while (i < minimap->map_scale)
 	{
@@ -67,10 +69,12 @@ void	draw_map_blocks(t_data *data, t_minimap *minimap)
 		x = 0;
 		while (x < data->map->max_len)
 		{
-			if (data->map->map2d[y][x] == '1' || data->map->map2d[y][x] == '0')
+			if (data->map->map2d[y][x] == '1' || data->map->map2d[y][x] == '0' \
+				|| data->map->map2d[y][x] == 'X')
 				draw_map_cell(data, minimap, x, y);
 			x++;
 		}
 		y++;
 	}
 }
+
