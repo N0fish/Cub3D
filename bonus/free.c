@@ -3,76 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:16:54 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:41:36 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-
-void	free_images(t_map *map)
-{
-	if (map->east_wall)
-	{
-		free(map->east_wall);
-		map->east_wall = NULL;
-	}
-	if (map->west_wall)
-	{
-		free(map->west_wall);
-		map->west_wall = NULL;
-	}
-	if (map->north_wall)
-	{
-		free(map->north_wall);
-		map->north_wall = NULL;
-	}
-	if (map->south_wall)
-	{
-		free(map->south_wall);
-		map->south_wall = NULL;
-	}
-}
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i] != NULL)
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
-
-static void	free_map_resources(t_map *map)
-{
-	if (map->floor)
-	{
-		free(map->floor);
-		map->floor = NULL;
-	}
-	if (map->ceiling)
-	{
-		free(map->ceiling);
-		map->ceiling = NULL;
-	}
-	if (map->map2d)
-	{
-		free_tab(map->map2d);
-		map->map2d = NULL;
-	}
-	free_images(map);
-	if (map)
-		free(map);
-	map = NULL;
-}
 
 void	free_and_exit(t_data *data)
 {
@@ -96,6 +34,9 @@ void	free_and_exit(t_data *data)
 	free_sprites(data);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
 	exit(EXIT_SUCCESS);
 }
 

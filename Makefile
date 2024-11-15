@@ -6,7 +6,7 @@
 #    By: algultse <algultse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 11:54:39 by roarslan          #+#    #+#              #
-#    Updated: 2024/11/15 18:48:03 by algultse         ###   ########.fr        #
+#    Updated: 2024/11/15 19:48:47 by algultse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,21 +27,21 @@ MANDATORYDIR = ./src/
 BONUSDIR = ./bonus/
 
 SRC = get_next_line.c get_next_line_utils.c \
-	utils.c utils2.c \
+	utils.c utils2.c utils_fd.c \
 	check_map.c check_map2.c assets_check.c \
 	textures_check.c textures_color.c \
 	check_2dmap.c check_2dmap2.c check_around.c \
-	free.c ft_split.c \
+	free.c free2.c ft_split.c \
 	move.c casting.c draw.c \
 	xpm_to_image.c movement.c \
 	init.c
 
 SRCS_BONUS = $(BONUSDIR)get_next_line.c $(BONUSDIR)get_next_line_utils.c \
-	$(BONUSDIR)utils.c $(BONUSDIR)utils2.c \
+	$(BONUSDIR)utils.c $(BONUSDIR)utils2.c $(BONUSDIR)utils_fd.c \
 	$(BONUSDIR)check_map.c $(BONUSDIR)check_map2.c $(BONUSDIR)assets_check.c \
 	$(BONUSDIR)textures_check.c $(BONUSDIR)textures_color.c \
 	$(BONUSDIR)check_2dmap.c $(BONUSDIR)check_2dmap2.c $(BONUSDIR)check_around.c \
-	$(BONUSDIR)free.c $(BONUSDIR)ft_split.c \
+	$(BONUSDIR)free.c $(BONUSDIR)free2.c $(BONUSDIR)ft_split.c \
 	$(BONUSDIR)move.c $(BONUSDIR)casting.c \
 	$(BONUSDIR)draw.c $(BONUSDIR)minimap.c $(BONUSDIR)minimap2.c \
 	$(BONUSDIR)xpm_to_image.c $(BONUSDIR)movement.c \

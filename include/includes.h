@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:56 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/06 13:35:30 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:43:20 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,11 +233,13 @@ char	*ft_strdup_to_n(char *str);
 char	*ft_strcpy(char *dest, char *src);
 void	*ft_memset(void *s, int c, size_t n);
 int		is_map_assets(char *line);
+int		check_file_descriptor(char *file_path);
 
 // free.c
 void	free_images(t_map *map);
 void	free_tab(char **tab);
 void	free_and_exit(t_data *data);
+void	free_map_resources(t_map *map);
 void	ft_destroy_img(t_data *data);
 int		ft_escape(t_data *data);
 
