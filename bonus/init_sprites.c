@@ -88,8 +88,8 @@ void init_sprites(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 	{
-		ft_putstr_fd("Error\nMLX initialization failed\n", 2);
-		exit(EXIT_FAILURE);
+		ft_putstr_fd("Error\nMLX fail\n", 2), free_and_exit(data);
+		return ;
 	}
 	allocate_sprites_array(data);
 	i = 0;

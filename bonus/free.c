@@ -80,6 +80,11 @@ void	free_and_exit(t_data *data)
 		free_map_resources(data->map);
 	if (data->game)
 	{
+		if (data->game->zbuffer)
+		{
+			free(data->game->zbuffer);
+			data->game->zbuffer = NULL;
+		}
 		free(data->game);
 		data->game = NULL;
 	}

@@ -88,10 +88,8 @@ void	calculate_sprite_transform(t_data *data, t_sprite *sprite, \
 
 //utils_sprite
 void	handle_sprite(char *line, int i, t_map *map);
+void	free_sprites(t_data *data);
 char	*ft_strjoin_b(char const *s1, char const *s2);
 char	*ft_itoa(int n);
-
-void	free_sprites(t_data *data);
-void	free_mlx(t_data *data);
 
 #endif
