@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+         #
+#    By: algultse <algultse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 11:54:39 by roarslan          #+#    #+#              #
-#    Updated: 2024/11/06 14:47:19 by roarslan         ###   ########.fr        #
+#    Updated: 2024/11/15 18:48:03 by algultse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRCS_BONUS = $(BONUSDIR)get_next_line.c $(BONUSDIR)get_next_line_utils.c \
 	$(BONUSDIR)xpm_to_image.c $(BONUSDIR)movement.c \
 	$(BONUSDIR)init.c $(BONUSDIR)allocate.c $(BONUSDIR)init_sprites.c \
 	$(BONUSDIR)ft_itoa.c $(BONUSDIR)utils_sprite.c \
-	$(BONUSDIR)draw_sprite.c $(BONUSDIR)draw_sprite_calculate.c 
+	$(BONUSDIR)draw_sprite.c $(BONUSDIR)draw_sprite_calculate.c \
+	$(BONUSDIR)mouse_move.c
 
 MANDATORY_SRC = $(MANDATORYDIR)main.c
 BONUS_SRC = $(BONUSDIR)main_bonus.c

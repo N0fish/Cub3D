@@ -6,7 +6,7 @@
 /*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:47:01 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/05 22:49:32 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:47:37 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
+typedef struct s_game	t_game;
 
 typedef struct s_minimap
 {
@@ -73,6 +74,9 @@ typedef struct s_texture_coordinates
 	int	texY;
 }	t_texture_coordinates;
 
+//mouse_move
+int		mouse_move(int x, int y, t_data *data);
+
 //minimap
 void	draw_minimap(t_data *data);
 void	draw_map_blocks(t_data *data, t_minimap *minimap);
@@ -84,7 +88,6 @@ void	draw_sprites(t_data *data);
 void	init_sprites(t_data *data);
 void	calculate_sprite_transform(t_data *data, t_sprite *sprite, \
 									t_sprite_transform *tdata);
-
 
 //utils_sprite
 void	handle_sprite(char *line, int i, t_map *map);

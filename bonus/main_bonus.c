@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/06 14:48:41 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:50:32 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	init_structures(t_data *data)
 	data->num_sprites = 0;
 }
 
-
 int	ft_render(t_data *data)
 {
 	handle_movement(data);
@@ -47,30 +46,6 @@ int	ft_render(t_data *data)
     draw_sprites(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
-	return (0);
-}
-
-int	mouse_move(int x, int y, t_data *data)
-{
-	int	center_x;
-	int	delta_x;
-	t_game	*game;
-
-	(void)y;
-	game = data->game;
-	center_x = game->sizex / 2;
-	delta_x = x - center_x;
-	if (abs(delta_x) > 1)
-	{
-		game->rot_speed = delta_x * MOUSE_SENSITIVITY;
-		game->olddirx = game->dirx;
-		game->oldplanex = game->planex;
-		game->dirx = game->dirx * cos(game->rot_speed) - game->diry * sin(game->rot_speed);
-		game->diry = game->olddirx * sin(game->rot_speed) + game->diry * cos(game->rot_speed);
-		game->planex = game->planex * cos(game->rot_speed) - game->planey * sin(game->rot_speed);
-		game->planey = game->oldplanex * sin(game->rot_speed) + game->planey * cos(game->rot_speed);		
-		mlx_mouse_move(data->mlx, data->win, center_x, game->sizey / 2);
-	}
 	return (0);
 }
 
@@ -93,8 +68,9 @@ int	launch_game(t_data *data)
 	mlx_hook(data->win, KeyPress, KeyPressMask, &ft_keypress, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_keyrelease, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_escape, data);
-	// mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, data->game->sizey / 2);
-	// mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
+	mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
+	mlx_mouse_show(data->mlx, data->win);
+	// mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, data->game->sizey / 2); //больше не нужна
 	// mlx_mouse_hide(data->mlx, data->win); //leaks
 	mlx_loop_hook(data->mlx, &ft_render, data);
 	mlx_loop(data->mlx);
