@@ -158,7 +158,7 @@ typedef struct s_data
 //check_map.c
 void	check_map(t_map *map, char *file);
 int		check_name(char *file);
-int		check_open(char *file);
+int		check_file_descriptor(char *file);
 void	ft_get_size_malloc(t_map *map);
 void	get_map_size(t_map *map, char *file);
 

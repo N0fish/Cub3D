@@ -27,7 +27,7 @@ MANDATORYDIR = ./src/
 BONUSDIR = ./bonus/
 
 SRC = get_next_line.c get_next_line_utils.c \
-	utils.c utils2.c utils_fd.c \
+	utils.c utils2.c \
 	check_map.c check_map2.c assets_check.c \
 	textures_check.c textures_color.c \
 	check_2dmap.c check_2dmap2.c check_around.c \
@@ -37,7 +37,7 @@ SRC = get_next_line.c get_next_line_utils.c \
 	init.c
 
 SRCS_BONUS = $(BONUSDIR)get_next_line.c $(BONUSDIR)get_next_line_utils.c \
-	$(BONUSDIR)utils.c $(BONUSDIR)utils2.c $(BONUSDIR)utils_fd.c \
+	$(BONUSDIR)utils.c $(BONUSDIR)utils2.c \
 	$(BONUSDIR)check_map.c $(BONUSDIR)check_map2.c $(BONUSDIR)assets_check.c \
 	$(BONUSDIR)textures_check.c $(BONUSDIR)textures_color.c \
 	$(BONUSDIR)check_2dmap.c $(BONUSDIR)check_2dmap2.c $(BONUSDIR)check_around.c \

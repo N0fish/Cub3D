@@ -12,11 +12,11 @@
 
 #include "includes.h"
 
-int	check_open(char *file)
+int	check_file_descriptor(char *file_path)
 {
 	int	fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	close(fd);
@@ -84,7 +84,7 @@ void	get_map_size(t_map *map, char *file)
 
 void	check_map(t_map *map, char *file)
 {
-	if (!check_open(file) || !check_name(file))
+	if (!check_file_descriptor(file) || !check_name(file))
 	{
 		ft_putstr_fd("Error\nIncorrect map\n", STDERR_FILENO);
 		free_and_exit(map->data);
