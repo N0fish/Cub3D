@@ -55,14 +55,36 @@ int	calculate_mouse_delta(int x)
 
 int	mouse_move(int x, int y, t_data *data)
 {
-	int	delta_x;
+	static int	screen_width;
+	static int	first_call;
+	int			delta_x;
 
 	(void)y;
+	if (first_call == 0)
+	{
+		screen_width = data->game->sizex;
+		first_call = 1;
+	}
 	delta_x = calculate_mouse_delta(x);
-	if (ft_abs(delta_x) < 3)
-		return (0);
-	rotate_camera(data, delta_x);
+	if (ft_abs(delta_x) > 3)
+		rotate_camera(data, delta_x);
+	if (x <= 0)
+		rotate_camera(data, -MOUSE_DPI);
+	if (x >= screen_width -1)
+		rotate_camera(data, MOUSE_DPI);
 	return (0);
+}
+
+void	handle_mouse_rotation(t_data *data)
+{
+	int	x;
+	int	y;
+
+	mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
+	if (x < 0)
+		rotate_camera(data, -MOUSE_DPI);
+	else if (x > data->game->sizex)
+		rotate_camera(data, MOUSE_DPI);
 }
 
 /*

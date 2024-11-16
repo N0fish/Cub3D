@@ -16,9 +16,9 @@
 # include "includes.h"
 
 # define MOUSE_SENSITIVITY 0.002
+# define MOUSE_DPI 15
 # define WIDTH 1024
 # define HEIGHT 768
-# define NUM_SPRITES 1
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
@@ -76,6 +76,7 @@ typedef struct s_texture_coordinates
 
 //mouse_move
 int		mouse_move(int x, int y, t_data *data);
+void	handle_mouse_rotation(t_data *data);
 
 //minimap
 void	draw_minimap(t_data *data);
