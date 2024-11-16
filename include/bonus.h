@@ -92,8 +92,19 @@ void	calculate_sprite_transform(t_data *data, t_sprite *sprite, \
 //utils_sprite
 void	handle_map_sprites(t_map *map);
 void	handle_sprite(char *line, int i, t_map *map);
-void	free_sprites(t_data *data);
 char	*ft_strjoin_b(char const *s1, char const *s2);
+void    sort_sprites(t_data *data, int i, int j);
+
+//ft_itoa
 char	*ft_itoa(int n);
+
+//free2
+void	free_sprites(t_data *data);
+
+//math
+double 	square(double v);
+double	compute_dist(t_sprite s, t_game *game);
+int		ft_abs(int v);
+double 	ft_fabs(double v);
 
 #endif

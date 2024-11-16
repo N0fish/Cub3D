@@ -15,7 +15,6 @@
 static void	calculate_sprite_position(t_data *data, t_sprite *sprite, \
 								t_sprite_transform *tdata)
 {
-	printf("sprite->x: %f, sprite->y: %f\n", sprite->x, sprite->y);
 	tdata->spriteX = sprite->x - data->game->posx;
 	tdata->spriteY = sprite->y - data->game->posy;
 }
@@ -45,7 +44,7 @@ static void	calculate_sprite_screen(t_data *data, t_sprite_transform *tdata)
 		return ;
 	tdata->spriteScreenX = (int)((data->game->sizex / 2) \
 							* (1 + tdata->transformX / tdata->transformY));
-	tdata->spriteHeight = abs((int)(data->game->sizey / tdata->transformY));
+	tdata->spriteHeight = ft_abs((int)(data->game->sizey / tdata->transformY));
 	tdata->spriteWidth = tdata->spriteHeight;
 }
 

@@ -82,12 +82,16 @@ void	draw_sprites(t_data *data)
 		return ;
 	ft_memset(&tdata, 0, sizeof(t_sprite_transform));
 	y = 0;
+	sort_sprites(data, 0, 0);
 	while (y < data->total_sprites)
 	{
 		sprite = &data->sprites[y];
 		calculate_sprite_transform(data, sprite, &tdata);
 		if (tdata.transformY <= 0)
-			return ;
+		{
+			y++;
+			continue;
+		}
 		stripe = tdata.drawStartX;
 		while (stripe < tdata.drawEndX)
 		{

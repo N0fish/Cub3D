@@ -59,7 +59,7 @@ int	mouse_move(int x, int y, t_data *data)
 
 	(void)y;
 	delta_x = calculate_mouse_delta(x);
-	if (abs(delta_x) < 3)
+	if (ft_abs(delta_x) < 3)
 		return (0);
 	rotate_camera(data, delta_x);
 	return (0);

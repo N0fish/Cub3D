@@ -55,7 +55,6 @@ static void	load_sprite_texture(t_data *data, int sprite_index, int frame_index)
 
 static void	allocate_sprites_array(t_data *data)
 {
-	printf("data->total_sprites: %d\n", data->total_sprites);
 	data->sprites = (t_sprite *)malloc(sizeof(t_sprite) * data->total_sprites);
 	if (!data->sprites)
 	{

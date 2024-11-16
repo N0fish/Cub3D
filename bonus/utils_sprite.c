@@ -30,7 +30,6 @@ void	handle_map_sprites(t_map *map)
 				sprite = &map->data->sprites[map->data->num_sprites];
 				sprite->x = x + 0.5;
 				sprite->y = y + 0.5;
-				printf("sprite->x: %f, sprite->y: %f\n", sprite->x, sprite->y);
 				map->data->num_sprites++;
 			}
 			x++;
@@ -76,6 +75,32 @@ char	*ft_strjoin_b(char const *s1, char const *s2)
 		*s_dest++ = *s2++;
 	*s_dest = '\0';
 	return (p_dest);
+}
+
+void    sort_sprites(t_data *data, int i, int j)
+{
+	double 		dist_i;
+	double 		dist_j;
+	t_sprite	temp;
+
+	i = 0;
+	while (i < data->total_sprites - 1)
+	{
+		j = i + 1;
+		while (j < data->total_sprites)
+		{
+			dist_i = compute_dist(data->sprites[i], data->game);
+			dist_j = compute_dist(data->sprites[j], data->game);
+			if (dist_i < dist_j)
+			{
+				temp = data->sprites[i];
+				data->sprites[i] = data->sprites[j];
+				data->sprites[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 /*
