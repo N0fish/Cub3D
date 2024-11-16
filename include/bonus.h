@@ -90,6 +90,7 @@ void	calculate_sprite_transform(t_data *data, t_sprite *sprite, \
 									t_sprite_transform *tdata);
 
 //utils_sprite
+void	handle_map_sprites(t_map *map);
 void	handle_sprite(char *line, int i, t_map *map);
 void	free_sprites(t_data *data);
 char	*ft_strjoin_b(char const *s1, char const *s2);

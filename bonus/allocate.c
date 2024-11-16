@@ -80,5 +80,5 @@ void allocate_structures(t_data *data)
 	allocate_game(data);
 	allocate_img(data);
 	allocate_texturess(data);
-	init_sprites(data);
+		// init_sprites(data);
 }

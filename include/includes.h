@@ -153,6 +153,7 @@ typedef struct s_data
 	t_keys		keys;
 	t_sprite	*sprites;
 	int			num_sprites;
+	int			total_sprites;
 }	t_data;
 
 //check_map.c

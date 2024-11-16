@@ -76,24 +76,30 @@ void	draw_sprites(t_data *data)
 	t_sprite_transform	tdata;
 	t_sprite			*sprite;
 	int					stripe;
+	int					y;
 
 	if (!data || data->num_sprites == 0)
 		return ;
 	ft_memset(&tdata, 0, sizeof(t_sprite_transform));
-	sprite = &data->sprites[0];
-	calculate_sprite_transform(data, sprite, &tdata);
-	if (tdata.transformY <= 0)
-		return ;
-	stripe = tdata.drawStartX;
-	while (stripe < tdata.drawEndX)
+	y = 0;
+	while (y < data->total_sprites)
 	{
-		if (stripe >= 0 && stripe < data->game->sizex
-			&& tdata.transformY < data->game->zbuffer[stripe])
+		sprite = &data->sprites[y];
+		calculate_sprite_transform(data, sprite, &tdata);
+		if (tdata.transformY <= 0)
+			return ;
+		stripe = tdata.drawStartX;
+		while (stripe < tdata.drawEndX)
 		{
-			draw_sprite_stripe(data, sprite, &tdata, stripe);
-			data->game->zbuffer[stripe] = tdata.transformY;
+			if (stripe >= 0 && stripe < data->game->sizex
+				&& tdata.transformY < data->game->zbuffer[stripe])
+			{
+				draw_sprite_stripe(data, sprite, &tdata, stripe);
+				data->game->zbuffer[stripe] = tdata.transformY;
+			}
+			stripe++;
 		}
-		stripe++;
+		sprite->current_frame = (sprite->current_frame + 1) % sprite->num_frames;
+		y++;
 	}
-	sprite->current_frame = (sprite->current_frame + 1) % sprite->num_frames;
 }

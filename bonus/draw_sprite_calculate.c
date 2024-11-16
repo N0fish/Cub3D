@@ -15,6 +15,7 @@
 static void	calculate_sprite_position(t_data *data, t_sprite *sprite, \
 								t_sprite_transform *tdata)
 {
+	printf("sprite->x: %f, sprite->y: %f\n", sprite->x, sprite->y);
 	tdata->spriteX = sprite->x - data->game->posx;
 	tdata->spriteY = sprite->y - data->game->posy;
 }

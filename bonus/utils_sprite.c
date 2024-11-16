@@ -12,6 +12,32 @@
 
 #include "includes.h"
 
+void	handle_map_sprites(t_map *map)
+{
+	int			x;
+	int			y;
+	t_sprite	*sprite;
+
+	// x = 0;
+	y = 0;
+	while (map->map2d[y])
+	{
+		x = 0;
+		while (map->map2d[y][x])
+		{
+			if (map->map2d[y][x] == 'X')
+			{
+				sprite = &map->data->sprites[map->data->num_sprites];
+				sprite->x = x + 0.5;
+				sprite->y = y + 0.5;
+				printf("sprite->x: %f, sprite->y: %f\n", sprite->x, sprite->y);
+				map->data->num_sprites++;
+			}
+			x++;
+		}
+		y++;
+	}	
+}
 void	handle_sprite(char *line, int i, t_map *map)
 {
 	int			j;
@@ -20,7 +46,7 @@ void	handle_sprite(char *line, int i, t_map *map)
 	j = 0;
 	while (line[j])
 	{
-		if (line[j] == 'X' && map->data->num_sprites < NUM_SPRITES)
+		if (line[j] == 'X')
 		{
 			sprite = &map->data->sprites[map->data->num_sprites];
 			sprite->x = j + 0.5;

@@ -49,7 +49,7 @@ void get_map2d(char *line, t_map *map, int fd)
 	while (line)
 	{
 		map->map2d[i] = ft_strdup_to_n(line);
-		handle_sprite(line, i, map);
+		// handle_sprite(line, i, map);
 		i++;
 		free(line);
 		line = get_next_line(fd);

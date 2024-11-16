@@ -16,6 +16,8 @@ void	init_structures(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;
+	data->total_sprites = 0;
+	data->num_sprites = 0;
 	allocate_structures(data);
 	data->map->map2d = NULL;
 	data->map->data = data;
@@ -33,7 +35,6 @@ void	init_structures(t_data *data)
 	data->keys.d = 0;
 	data->keys.left = 0;
 	data->keys.right = 0;
-	data->num_sprites = 0;
 }
 
 int	ft_render(t_data *data)
@@ -85,6 +86,7 @@ int	main(int ac, char **av)
 	{
 		init_structures(&data);
 		check_map(data.map, av[1]);
+		init_sprites(&data);
 		launch_game(&data);
 	}
 	else

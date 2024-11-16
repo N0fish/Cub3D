@@ -33,7 +33,10 @@ void	fill_map_helper(t_map *map, int i, int j, char *new_line)
 	else if (is_player(map->map2d[i][j]))
 		new_line[j] = '0';
 	else if (map->map2d[i][j] == 'X')
+	{
+		map->data->total_sprites++;
 		new_line[j] = 'X';
+	}
 	else
 		new_line[j] = map->map2d[i][j];
 }
