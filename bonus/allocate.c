@@ -12,7 +12,7 @@
 
 #include "includes.h"
 
-static void allocate_map(t_data *data)
+static void	allocate_map(t_data *data)
 {
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)
@@ -23,7 +23,7 @@ static void allocate_map(t_data *data)
 	data->map->data = data;
 }
 
-static void allocate_game(t_data *data)
+static void	allocate_game(t_data *data)
 {
 	data->game = (t_game *)malloc(sizeof(t_game));
 	if (!data->game)
@@ -42,7 +42,7 @@ static void allocate_game(t_data *data)
 	}
 }
 
-static void allocate_img(t_data *data)
+static void	allocate_img(t_data *data)
 {
 	data->img = (t_img *)malloc(sizeof(t_img));
 	if (!data->img)
@@ -74,11 +74,10 @@ static void	allocate_texturess(t_data *data)
 	}
 }
 
-void allocate_structures(t_data *data)
+void	allocate_structures(t_data *data)
 {
 	allocate_map(data);
 	allocate_game(data);
 	allocate_img(data);
 	allocate_texturess(data);
-		// init_sprites(data);
 }

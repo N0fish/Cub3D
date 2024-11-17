@@ -12,6 +12,13 @@
 
 #include "includes.h"
 
+void	calculate_texture_coordinates(int y, t_sprite_transform *tdata, \
+			t_texture_coordinates *coords, t_sprite_texture_data *texture_data)
+{
+	coords->texY = (y - tdata->drawStartY) \
+					* texture_data->texHeight / tdata->spriteHeight;
+}
+
 void	handle_map_sprites(t_map *map)
 {
 	int			x;
@@ -77,10 +84,10 @@ char	*ft_strjoin_b(char const *s1, char const *s2)
 	return (p_dest);
 }
 
-void    sort_sprites(t_data *data, int i, int j)
+void	sort_sprites(t_data *data, int i, int j)
 {
-	double 		dist_i;
-	double 		dist_j;
+	double		dist_i;
+	double		dist_j;
 	t_sprite	temp;
 
 	i = 0;
@@ -102,14 +109,3 @@ void    sort_sprites(t_data *data, int i, int j)
 		i++;
 	}
 }
-
-/*
-void update_sprites(t_data *data)
-{
-	for (int i = 0; i < NUM_SPRITES; i++)
-	{
-		t_sprite *sprite = &data->sprites[i];
-		sprite->current_frame = (sprite->current_frame + 1) % sprite->num_frames;
-	}
-}
-*/

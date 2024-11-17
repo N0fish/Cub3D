@@ -24,8 +24,8 @@ void	cast_rays(t_data *data)
 		game->camerax = 2 * i / (double)game->sizex - 1;
 		game->raydirx = game->dirx + game->planex * game->camerax;
 		game->raydiry = game->diry + game->planey * game->camerax;
-		game->deltadistx = fabs(1 / game->raydirx);
-		game->deltadisty = fabs(1 / game->raydiry);
+		game->deltadistx = ft_fabs(1 / game->raydirx);
+		game->deltadisty = ft_fabs(1 / game->raydiry);
 		calculate_sidedist(game);
 		ft_dda(game);
 		get_lines_height(game);

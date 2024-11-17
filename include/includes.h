@@ -281,4 +281,7 @@ void	ft_xpm_to_image(t_data *data);
 void	ft_xpm_error(t_data *data);
 void	ft_get_addr(t_data *data);
 
+//math
+double	ft_fabs(double v);
+
 #endif

@@ -34,7 +34,7 @@ SRC = get_next_line.c get_next_line_utils.c \
 	free.c free2.c ft_split.c \
 	move.c casting.c draw.c \
 	xpm_to_image.c movement.c \
-	init.c
+	init.c math.c
 
 SRCS_BONUS = $(BONUSDIR)get_next_line.c $(BONUSDIR)get_next_line_utils.c \
 	$(BONUSDIR)utils.c $(BONUSDIR)utils2.c \
@@ -65,7 +65,7 @@ all: $(MLX) $(NAME)
 $(NAME): $(OBJS) $(MANDATORY_OBJS)
 	$(CC) $(OBJS) $(MANDATORY_OBJS) $(CFLAGS) $(MLX) $(MLXFLAGS) -o $(NAME)
 
-bonus: $(MLX) $(NAME_BONUS) $(FLAG_FILE)
+bonus: $(MLX) $(FLAG_FILE)
 
 $(FLAG_FILE): $(MLX) $(BONUS_OBJS)
 	$(CC) $(BONUS_OBJS) $(CFLAGS) $(MLX) $(MLXFLAGS) -o $(NAME_BONUS)

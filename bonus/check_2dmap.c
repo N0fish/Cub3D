@@ -39,7 +39,7 @@ void	get_2dmap_info(t_map *map, char *file)
 		free_and_exit(map->data);
 }
 
-void get_map2d(char *line, t_map *map, int fd)
+void	get_map2d(char *line, t_map *map, int fd)
 {
 	int	i;
 
@@ -49,7 +49,6 @@ void get_map2d(char *line, t_map *map, int fd)
 	while (line)
 	{
 		map->map2d[i] = ft_strdup_to_n(line);
-		// handle_sprite(line, i, map);
 		i++;
 		free(line);
 		line = get_next_line(fd);

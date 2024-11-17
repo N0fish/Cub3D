@@ -25,13 +25,6 @@ static void	get_sprite_texture_data(t_sprite *sprite, \
 	texture_data->texHeight = 32;
 }
 
-static void	calculate_texture_coordinates(int y, t_sprite_transform *tdata, \
-			t_texture_coordinates *coords, t_sprite_texture_data *texture_data)
-{
-	coords->texY = (y - tdata->drawStartY) \
-					* texture_data->texHeight / tdata->spriteHeight;
-}
-
 static void	draw_sprite_pixel(t_data *data, \
 						t_sprite_texture_data *texture_data, \
 						t_texture_coordinates *coords, int pos)
@@ -71,6 +64,49 @@ static void	draw_sprite_stripe(t_data *data, t_sprite *sprite, \
 	}
 }
 
+static int	draw_single_sprite(t_data *data, t_sprite *sprite, \
+								t_sprite_transform *tdata)
+{
+	int	stripe;
+
+	calculate_sprite_transform(data, sprite, tdata);
+	if (tdata->transformY <= 0)
+		return (1);
+	stripe = tdata->drawStartX;
+	while (stripe < tdata->drawEndX)
+	{
+		if (stripe >= 0 && stripe < data->game->sizex
+			&& tdata->transformY < data->game->zbuffer[stripe])
+		{
+			draw_sprite_stripe(data, sprite, tdata, stripe);
+			data->game->zbuffer[stripe] = tdata->transformY;
+		}
+		stripe++;
+	}
+	sprite->current_frame = (sprite->current_frame + 1) % sprite->num_frames;
+	return (1);
+}
+
+void	draw_sprites(t_data *data)
+{
+	t_sprite_transform	tdata;
+	t_sprite			*sprite;
+	int					y;
+
+	if (!data || data->num_sprites == 0)
+		return;
+	ft_memset(&tdata, 0, sizeof(t_sprite_transform));
+	sort_sprites(data, 0, 0);
+	y = 0;
+	while (y < data->total_sprites)
+	{
+		sprite = &data->sprites[y];
+		if (draw_single_sprite(data, sprite, &tdata))
+			y++;
+	}
+}
+
+/*
 void	draw_sprites(t_data *data)
 {
 	t_sprite_transform	tdata;
@@ -107,3 +143,4 @@ void	draw_sprites(t_data *data)
 		y++;
 	}
 }
+*/

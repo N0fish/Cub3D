@@ -71,7 +71,8 @@ int	launch_game(t_data *data)
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_keyrelease, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_escape, data);
 	mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
-	mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, data->game->sizey / 2);
+	mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, \
+					data->game->sizey / 2);
 	// mlx_mouse_hide(data->mlx, data->win); //leaks
 	mlx_loop_hook(data->mlx, &ft_render, data);
 	mlx_loop(data->mlx);

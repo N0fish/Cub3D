@@ -5,34 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 21:16:25 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/17 21:30:02 by algultse         ###   ########.fr       */
+/*   Created: 2024/11/17 20:04:18 by algultse          #+#    #+#             */
+/*   Updated: 2024/11/17 21:47:33 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-
-double	square(double v)
-{
-	return (v * v);
-}
-
-double	compute_dist(t_sprite s, t_game *game)
-{
-	double dx;
-	double dy;
-
-	dx = s.x - game->posx;
-	dy = s.y - game->posy;
-	return (square(dx) + square(dy));
-}
-
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
 
 double	ft_fabs(double n)
 {
