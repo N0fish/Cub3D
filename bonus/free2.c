@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:27:04 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/15 19:42:07 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:55:16 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	free_sprite_textures(t_data *data, t_sprite *sprite)
 		}
 		j++;
 	}
-	free(sprite->textures);
+	if (sprite->textures)
+		free(sprite->textures);
 	sprite->textures = NULL;
 }
 
@@ -44,7 +45,8 @@ void	free_sprites(t_data *data)
 		free_sprite_textures(data, &data->sprites[i]);
 		i++;
 	}
-	free(data->sprites);
+	if (data->sprites)
+		free(data->sprites);
 	data->sprites = NULL;
 }
 

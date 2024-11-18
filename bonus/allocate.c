@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:10:32 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/13 21:09:04 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:48:24 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	allocate_texturess(t_data *data)
 			free(data->img);
 			free_and_exit(data);
 		}
+		data->img->texture[i]->img_ptr = NULL;
 		i++;
 	}
 }

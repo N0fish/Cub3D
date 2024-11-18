@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/15 19:41:36 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:49:51 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_and_exit(t_data *data)
 {
 	if (data->map)
 		free_map_resources(data->map);
+	ft_destroy_img(data);
 	if (data->game)
 	{
 		if (data->game->zbuffer)
@@ -32,7 +33,6 @@ void	free_and_exit(t_data *data)
 		data->img = NULL;
 	}
 	free_sprites(data);
-	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
@@ -61,6 +61,7 @@ int	ft_escape(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
 	ft_destroy_img(data);
 	if (data->img->img_addr)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
