@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/18 15:40:19 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:07:05 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_and_exit(t_data *data)
 {
+	ft_destroy_img(data);
 	if (data->map)
 		free_map_resources(data->map);
 	if (data->game)
@@ -32,7 +33,8 @@ void	free_and_exit(t_data *data)
 		data->img = NULL;
 	}
 	free_sprites(data);
-	mlx_destroy_display(data->mlx);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
@@ -63,7 +65,7 @@ int	ft_escape(t_data *data)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	ft_destroy_img(data);
+	// ft_destroy_img(data);
 	free_and_exit(data);
 	return (0);
 }

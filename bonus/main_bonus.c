@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 15:31:25 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:19:30 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_structures(t_data *data)
 	data->keys.d = 0;
 	data->keys.left = 0;
 	data->keys.right = 0;
+	data->game->zbuffer = NULL;
 }
 
 int	ft_render(t_data *data)

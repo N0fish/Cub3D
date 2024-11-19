@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 15:20:48 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:53:50 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_and_exit(t_data *data)
 {
+	ft_destroy_img(data);
 	if (data->map)
 		free_map_resources(data->map);
 	if (data->game)
@@ -39,8 +40,12 @@ void	ft_destroy_img(t_data *data)
 		if (data->img->texture[i])
 		{
 			if (data->img->texture[i]->img_ptr)
+			{
 				mlx_destroy_image(data->mlx, data->img->texture[i]->img_ptr);
+				data->img->texture[i]->img_ptr = NULL;
+			}
 			free(data->img->texture[i]);
+			data->img->texture[i] = NULL;
 		}
 		i++;
 	}
@@ -48,12 +53,13 @@ void	ft_destroy_img(t_data *data)
 
 int	ft_escape(t_data *data)
 {
-	if (data->img->img_ptr)
+	if (data->img && data->img->img_ptr)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	ft_destroy_img(data);
-	mlx_destroy_display(data->mlx);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
 	free_and_exit(data);
 	return (0);
 }

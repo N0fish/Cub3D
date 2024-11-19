@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:27:04 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/18 14:55:16 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:19:08 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	free_sprite_textures(t_data *data, t_sprite *sprite)
 		}
 		j++;
 	}
-	if (sprite->textures)
-		free(sprite->textures);
+	free(sprite->textures);
 	sprite->textures = NULL;
 }
 
