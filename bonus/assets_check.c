@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:43:29 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/15 19:11:09 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:21:51 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	small_image_check(t_map *map)
 			|| !check_extension(map->west_wall)))
 		return (0);
 	if (!check_file_descriptor(map->north_wall)
-			|| !check_file_descriptor(map->south_wall)
-			|| !check_file_descriptor(map->west_wall)
-			|| !check_file_descriptor(map->east_wall))
+		|| !check_file_descriptor(map->south_wall)
+		|| !check_file_descriptor(map->west_wall)
+		|| !check_file_descriptor(map->east_wall))
 		return (0);
 	return (1);
 }

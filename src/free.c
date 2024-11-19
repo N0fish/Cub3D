@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 15:19:09 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:20:48 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_destroy_img(t_data *data)
 
 int	ft_escape(t_data *data)
 {
-	//encore des leaks
 	if (data->img->img_ptr)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	if (data->win)

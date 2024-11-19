@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.h                                             :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:47:01 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/15 18:47:37 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:39:36 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ typedef struct s_sprite
 
 typedef struct s_sprite_transform
 {
-	double	spriteX;
-	double	spriteY;
-	double	transformX;
-	double	transformY;
-	int		spriteScreenX;
-	int		spriteHeight;
-	int		spriteWidth;
-	int		drawStartX;
-	int		drawEndX;
-	int		drawStartY;
-	int		drawEndY;
+	double	spritex;
+	double	spritey;
+	double	transformx;
+	double	transformy;
+	int		spritescreenx;
+	int		spriteheight;
+	int		spritewidth;
+	int		drawstartx;
+	int		drawendx;
+	int		drawstarty;
+	int		drawendy;
 }	t_sprite_transform;
 
 typedef struct s_sprite_texture_data
@@ -64,14 +64,14 @@ typedef struct s_sprite_texture_data
 	int		bpp;
 	int		size_line;
 	int		endian;
-	int		texWidth;
-	int		texHeight;
+	int		texwidth;
+	int		texheight;
 }	t_sprite_texture_data;
 
 typedef struct s_texture_coordinates
 {
-	int	texX;
-	int	texY;
+	int	texx;
+	int	texy;
 }	t_texture_coordinates;
 
 //mouse_move
@@ -105,7 +105,7 @@ char	*ft_itoa(int n);
 void	free_sprites(t_data *data);
 
 //math
-double 	square(double v);
+double	square(double v);
 double	compute_dist(t_sprite s, t_game *game);
 int		ft_abs(int v);
 

@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 15:13:13 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:31:25 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,26 @@ int	ft_render(t_data *data)
 {
 	handle_mouse_rotation(data);
 	handle_movement(data);
-	// ft_memset(data->img->img_addr, 0, data->game->sizex
-	// 	* data->game->sizey * (data->img->bits_per_pixel / 8));
-	// ft_memset(data->game->zbuffer, 0, sizeof(double) * data->game->sizex);
+	ft_memset(data->img->img_addr, 0, data->game->sizex
+		* data->game->sizey * (data->img->bits_per_pixel / 8));
+	ft_memset(data->game->zbuffer, 0, sizeof(double) * data->game->sizex);
 	cast_rays(data);
-    draw_sprites(data);
+	draw_sprites(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	return (0);
+}
+
+void	ft_hooks(t_data *data)
+{
+	mlx_hook(data->win, KeyPress, KeyPressMask, &ft_keypress, data);
+	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_keyrelease, data);
+	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_escape, data);
+	mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
+	mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, \
+					data->game->sizey / 2);
+	mlx_loop_hook(data->mlx, &ft_render, data);
+	mlx_loop(data->mlx);
 }
 
 int	launch_game(t_data *data)
@@ -73,15 +85,7 @@ int	launch_game(t_data *data)
 		free_and_exit(data);
 		return (0);
 	}
-	mlx_hook(data->win, KeyPress, KeyPressMask, &ft_keypress, data);
-	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_keyrelease, data);
-	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_escape, data);
-	mlx_hook(data->win, MotionNotify, PointerMotionMask, &mouse_move, data);
-	mlx_mouse_move(data->mlx, data->win, data->game->sizex / 2, \
-					data->game->sizey / 2);
-	// mlx_mouse_hide(data->mlx, data->win); //leaks
-	mlx_loop_hook(data->mlx, &ft_render, data);
-	mlx_loop(data->mlx);
+	ft_hooks(data);
 	return (1);
 }
 

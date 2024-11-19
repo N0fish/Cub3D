@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:21:03 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/13 21:29:17 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:25:57 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	load_sprite_texture(t_data *data, int sprite_index, int frame_index)
 		ft_putstr_fd("Error\nFailed to allocate memory for texture path\n", 2);
 		free_and_exit(data);
 	}
-	data->sprites[sprite_index].textures[frame_index] = mlx_xpm_file_to_image( \
-		data->mlx, \
+	data->sprites[sprite_index].textures[frame_index] = mlx_xpm_file_to_image \
+		(data->mlx, \
 		path, \
 		&data->img->texture[0]->width, \
 		&data->img->texture[0]->height \
@@ -72,21 +72,22 @@ static void	initialize_sprite(t_data *data, int index)
 								* data->sprites[index].num_frames);
 	if (!data->sprites[index].textures)
 	{
-		ft_putstr_fd( \
-			"Error\nFailed to allocate memory for sprite textures\n", 2 \
+		ft_putstr_fd \
+			("Error\nFailed to allocate memory for sprite textures\n", 2 \
 			);
 		free_and_exit(data);
 	}
 }
 
-void init_sprites(t_data *data)
+void	init_sprites(t_data *data)
 {
 	int	i;
 
 	data->mlx = mlx_init();
 	if (!data->mlx)
 	{
-		ft_putstr_fd("Error\nMLX fail\n", 2), free_and_exit(data);
+		ft_putstr_fd("Error\nMLX fail\n", 2);
+		free_and_exit(data);
 		return ;
 	}
 	allocate_sprites_array(data);

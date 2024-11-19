@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:10:32 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/19 15:12:44 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:21:41 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ static void	allocate_game(t_data *data)
 		ft_putstr_fd("Error\nMalloc failed\n", 2);
 		free_and_exit(data);
 	}
-	// data->game->sizex = WIDTH;
-	// data->game->sizey = HEIGHT;
-	// data->game->zbuffer = malloc(sizeof(double) * data->game->sizex);
-	// if (!data->game->zbuffer)
-	// {
-	// 	ft_putstr_fd("Error\nFailed to allocate memory for zbuffer\n", 2);
-	// 	free_and_exit(data);
-	// }
 }
 
 static void	allocate_img(t_data *data)

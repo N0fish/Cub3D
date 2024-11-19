@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:56 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/15 19:43:20 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:32:20 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,6 @@ void	player_init_helper2(double px, double py, t_data *data);
 void	allocate_textures(t_data *data);
 void	allocate_structures(t_data *data);
 
-
 //assest_check
 int		is_map_assets(char *line);
 void	get_map_images(char	*str, t_map *map);
@@ -262,7 +261,6 @@ void	rotate(t_game *game, int i);
 void	handle_movement(t_data *data);
 int		ft_keyrelease(int key, t_data *data);
 int		ft_keypress(int key, t_data *data);
-
 
 //casting
 void	cast_rays(t_data *data);

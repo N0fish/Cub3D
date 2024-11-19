@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprite.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 20:31:23 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/13 21:45:50 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:39:43 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	get_sprite_texture_data(t_sprite *sprite, \
 								t_sprite_texture_data *texture_data)
 {
-	texture_data->sprite_data = mlx_get_data_addr( \
+	texture_data->sprite_data = mlx_get_data_addr(\
 								sprite->textures[sprite->current_frame], \
 								&texture_data->bpp, \
 								&texture_data->size_line, \
 								&texture_data->endian \
 								);
-	texture_data->texWidth = 32;
-	texture_data->texHeight = 32;
+	texture_data->texwidth = 32;
+	texture_data->texheight = 32;
 }
 
 static void	draw_sprite_pixel(t_data *data, \
@@ -33,8 +33,8 @@ static void	draw_sprite_pixel(t_data *data, \
 	unsigned int	pixel_color;
 	char			*dst;
 
-	color = &texture_data->sprite_data[(coords->texY * texture_data->size_line \
-									+ coords->texX * (texture_data->bpp / 8))];
+	color = &texture_data->sprite_data[(coords->texy * texture_data->size_line \
+									+ coords->texx * (texture_data->bpp / 8))];
 	pixel_color = *(unsigned int *)color;
 	if ((pixel_color & 0x00FFFFFF) != 0x000000)
 	{
@@ -49,14 +49,15 @@ static void	draw_sprite_stripe(t_data *data, t_sprite *sprite, \
 	t_sprite_texture_data	texture_data;
 	t_texture_coordinates	coords;
 	int						y;
+	int						pos;
 
 	get_sprite_texture_data(sprite, &texture_data);
-	coords.texX = (stripe - tdata->drawStartX) \
-					* texture_data.texWidth / tdata->spriteWidth;
-	y = tdata->drawStartY;
-	while (y < tdata->drawEndY)
+	coords.texx = (stripe - tdata->drawstartx) \
+					* texture_data.texwidth / tdata->spritewidth;
+	y = tdata->drawstarty;
+	while (y < tdata->drawendy)
 	{
-		int pos = y * data->img->line_length \
+		pos = y * data->img->line_length \
 				+ stripe * (data->img->bits_per_pixel / 8);
 		calculate_texture_coordinates(y, tdata, &coords, &texture_data);
 		draw_sprite_pixel(data, &texture_data, &coords, pos);
@@ -70,16 +71,16 @@ static int	draw_single_sprite(t_data *data, t_sprite *sprite, \
 	int	stripe;
 
 	calculate_sprite_transform(data, sprite, tdata);
-	if (tdata->transformY <= 0)
+	if (tdata->transformy <= 0)
 		return (1);
-	stripe = tdata->drawStartX;
-	while (stripe < tdata->drawEndX)
+	stripe = tdata->drawstartx;
+	while (stripe < tdata->drawendx)
 	{
 		if (stripe >= 0 && stripe < data->game->sizex
-			&& tdata->transformY < data->game->zbuffer[stripe])
+			&& tdata->transformy < data->game->zbuffer[stripe])
 		{
 			draw_sprite_stripe(data, sprite, tdata, stripe);
-			data->game->zbuffer[stripe] = tdata->transformY;
+			data->game->zbuffer[stripe] = tdata->transformy;
 		}
 		stripe++;
 	}
@@ -94,7 +95,7 @@ void	draw_sprites(t_data *data)
 	int					y;
 
 	if (!data || data->num_sprites == 0)
-		return;
+		return ;
 	ft_memset(&tdata, 0, sizeof(t_sprite_transform));
 	sort_sprites(data, 0, 0);
 	y = 0;
@@ -123,19 +124,19 @@ void	draw_sprites(t_data *data)
 	{
 		sprite = &data->sprites[y];
 		calculate_sprite_transform(data, sprite, &tdata);
-		if (tdata.transformY <= 0)
+		if (tdata.transformy <= 0)
 		{
 			y++;
 			continue;
 		}
-		stripe = tdata.drawStartX;
-		while (stripe < tdata.drawEndX)
+		stripe = tdata.drawstartx;
+		while (stripe < tdata.drawendx)
 		{
 			if (stripe >= 0 && stripe < data->game->sizex
-				&& tdata.transformY < data->game->zbuffer[stripe])
+				&& tdata.transformy < data->game->zbuffer[stripe])
 			{
 				draw_sprite_stripe(data, sprite, &tdata, stripe);
-				data->game->zbuffer[stripe] = tdata.transformY;
+				data->game->zbuffer[stripe] = tdata.transformy;
 			}
 			stripe++;
 		}

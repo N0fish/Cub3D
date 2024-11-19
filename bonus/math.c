@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 21:16:25 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/17 21:30:02 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:27:30 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ double	square(double v)
 
 double	compute_dist(t_sprite s, t_game *game)
 {
-	double dx;
-	double dy;
+	double	dx;
+	double	dy;
 
 	dx = s.x - game->posx;
 	dy = s.y - game->posy;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:56:20 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/05 23:38:23 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:27:49 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 // нах-ся ли персонаж в пределах границ
 int	is_within_minimap_bounds(int px, int py, t_minimap *minimap)
 {
-	return ( \
-		px >= minimap->offset_x \
+	return \
+		(px >= minimap->offset_x \
 		&& px < minimap->offset_x + minimap->map_size \
 		&& py >= minimap->offset_y \
 		&& py < minimap->offset_y + minimap->map_size \

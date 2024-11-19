@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:41:33 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/05 23:39:47 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:28:04 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static int	get_map_cell_color(t_data *data, int x, int y)
 	return (0x000000);
 }
 
-// цвет миникарты и рисует одну ячейку, либо черным нарисует, либо белым будет блок
+// цвет миникарты и рисует одну ячейку,
+//либо черным нарисует, либо белым будет блок
 void	draw_map_cell(t_data *data, t_minimap *minimap, int x, int y)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sprite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 21:14:49 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/15 19:44:17 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:40:41 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	calculate_texture_coordinates(int y, t_sprite_transform *tdata, \
 			t_texture_coordinates *coords, t_sprite_texture_data *texture_data)
 {
-	coords->texY = (y - tdata->drawStartY) \
-					* texture_data->texHeight / tdata->spriteHeight;
+	coords->texy = (y - tdata->drawstarty) \
+					* texture_data->texheight / tdata->spriteheight;
 }
 
 void	handle_map_sprites(t_map *map)
@@ -25,7 +25,6 @@ void	handle_map_sprites(t_map *map)
 	int			y;
 	t_sprite	*sprite;
 
-	// x = 0;
 	y = 0;
 	while (map->map2d[y])
 	{
@@ -44,6 +43,7 @@ void	handle_map_sprites(t_map *map)
 		y++;
 	}	
 }
+
 void	handle_sprite(char *line, int i, t_map *map)
 {
 	int			j;
