@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:17:43 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:21:28 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:34:45 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	ft_get_addr(t_data *data)
 			&data->img->texture[i]->bits_per_pixel, \
 			&data->img->texture[i]->line_length, \
 			&data->img->texture[i]->endian);
+		if (!data->img->texture[i]->img_addr)
+		{
+			ft_putstr_fd("Error\nmlx_get_data_addr fail\n", STDERR_FILENO);// a tester
+			ft_xpm_error(data);	
+		}
 		i++;
 	}
 }

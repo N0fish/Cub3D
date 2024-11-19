@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/15 18:50:32 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:13:13 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	ft_render(t_data *data)
 {
 	handle_mouse_rotation(data);
 	handle_movement(data);
-	ft_memset(data->img->img_addr, 0, data->game->sizex
-		* data->game->sizey * (data->img->bits_per_pixel / 8));
-	ft_memset(data->game->zbuffer, 0, sizeof(double) * data->game->sizex);
+	// ft_memset(data->img->img_addr, 0, data->game->sizex
+	// 	* data->game->sizey * (data->img->bits_per_pixel / 8));
+	// ft_memset(data->game->zbuffer, 0, sizeof(double) * data->game->sizex);
 	cast_rays(data);
     draw_sprites(data);
 	draw_minimap(data);
@@ -54,6 +54,12 @@ int	ft_render(t_data *data)
 int	launch_game(t_data *data)
 {
 	mlx_get_screen_size(data->mlx, &data->game->sizex, &data->game->sizey);
+	data->game->zbuffer = malloc(sizeof(double) * data->game->sizex);
+	if (!data->game->zbuffer)
+	{
+		ft_putstr_fd("Error\nFailed to allocate memory for zbuffer\n", 2);
+		free_and_exit(data);
+	}
 	ft_xpm_to_image(data);
 	player_init(data);
 	data->win = mlx_new_window(data->mlx, data->game->sizex, \

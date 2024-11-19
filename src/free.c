@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/18 14:47:05 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:19:09 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_and_exit(t_data *data)
 {
 	if (data->map)
 		free_map_resources(data->map);
-	ft_destroy_img(data);
 	if (data->game)
 		free(data->game);
 	data->game = NULL;
@@ -49,11 +48,12 @@ void	ft_destroy_img(t_data *data)
 
 int	ft_escape(t_data *data)
 {
+	//encore des leaks
+	if (data->img->img_ptr)
+		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	ft_destroy_img(data);
-	if (data->img->img_addr)
-		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	mlx_destroy_display(data->mlx);
 	free_and_exit(data);
 	return (0);
