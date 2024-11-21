@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:01:21 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 16:07:05 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:38:16 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
+
+void	free_game_resources(t_game *game)
+{
+	if (game)
+	{
+		if (game->zbuffer)
+		{
+			free(game->zbuffer);
+			game->zbuffer = NULL;
+		}
+		free(game);
+	}
+}
 
 void	free_and_exit(t_data *data)
 {
 	ft_destroy_img(data);
 	if (data->map)
 		free_map_resources(data->map);
-	if (data->game)
-	{
-		if (data->game->zbuffer)
-		{
-			free(data->game->zbuffer);
-			data->game->zbuffer = NULL;
-		}
-		free(data->game);
-		data->game = NULL;
-	}
+	free_game_resources(data->game);
 	if (data->img)
 	{
 		free(data->img);
@@ -65,7 +69,6 @@ int	ft_escape(t_data *data)
 		mlx_destroy_image(data->mlx, data->img->img_ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	// ft_destroy_img(data);
 	free_and_exit(data);
 	return (0);
 }

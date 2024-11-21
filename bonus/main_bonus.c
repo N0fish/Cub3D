@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 11:47:13 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 16:19:30 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:30:11 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_structures(t_data *data)
 	data->win = NULL;
 	data->total_sprites = 0;
 	data->num_sprites = 0;
+	data->sprites = NULL;
 	allocate_structures(data);
 	data->map->map2d = NULL;
 	data->map->data = data;

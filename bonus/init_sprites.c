@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:21:03 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/19 16:13:09 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:31:22 by algultse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	init_sprites(t_data *data)
 		free_and_exit(data);
 		return ;
 	}
-	allocate_sprites_array(data);
+	if (data->total_sprites)
+		allocate_sprites_array(data);
 	i = 0;
 	while (i < data->total_sprites)
 	{
