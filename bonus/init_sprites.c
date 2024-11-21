@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algultse <algultse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:21:03 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/21 13:31:22 by algultse         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:56:28 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	load_sprite_texture(t_data *data, int sprite_index, int frame_index)
 		&data->img->texture[0]->height \
 		);
 	free(path);
+	path = NULL;
 	if (!data->sprites[sprite_index].textures[frame_index])
 		ft_xpm_error(data);
 	if (frame_index + 1 < data->sprites[sprite_index].num_frames)
@@ -61,10 +62,14 @@ static void	allocate_sprites_array(t_data *data)
 		ft_putstr_fd("Error\nFailed to allocate memory for sprites\n", 2);
 		free_and_exit(data);
 	}
+	data->sprites->textures = NULL;
 }
 
 static void	initialize_sprite(t_data *data, int index)
 {
+	int	i;
+
+	i = 0;
 	data->sprites[index].textures = NULL;
 	data->sprites[index].num_frames = 14;
 	data->sprites[index].current_frame = 0;
@@ -76,6 +81,11 @@ static void	initialize_sprite(t_data *data, int index)
 			("Error\nFailed to allocate memory for sprite textures\n", 2 \
 			);
 		free_and_exit(data);
+	}
+	while (i < data->sprites[index].num_frames)
+	{
+		data->sprites[index].textures[i] = NULL;
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:47:01 by algultse          #+#    #+#             */
-/*   Updated: 2024/11/19 15:39:36 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:24:03 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char	*ft_itoa(int n);
 
 //free2
 void	free_sprites(t_data *data);
+void	free_sprite_textures(t_data *data, t_sprite *sprite);
 
 //math
 double	square(double v);

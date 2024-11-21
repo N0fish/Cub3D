@@ -6,7 +6,7 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:17:43 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/19 15:28:55 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:56:41 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	ft_get_addr(t_data *data)
 void	ft_xpm_error(t_data *data)
 {
 	ft_putstr_fd("Error\nInvalid asset\n", 2);
-	mlx_destroy_image(data->mlx, data->img->img_ptr);
+	if (data->img && data->img->img_ptr)
+	{
+		mlx_destroy_image(data->mlx, data->img->img_ptr);
+		data->img->img_ptr = NULL;
+	}
 	ft_destroy_img(data);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
 	free_and_exit(data);
 }
 
