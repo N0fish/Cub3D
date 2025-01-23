@@ -6,14 +6,14 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:56 by roarslan          #+#    #+#             */
-/*   Updated: 2024/11/04 13:46:49 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:32:20 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDES_H
 # define INCLUDES_H
 
-# include "minilibx-linux/mlx.h"
+# include "mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdio.h>
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include "bonus.h"
 
 # define NORTH 0
 # define SOUTH 1
@@ -99,11 +100,13 @@ typedef struct s_game
 	int		drawend;
 	double	olddirx;
 	double	oldplanex;
+	double	rot_speed;
 	double	wallx;
 	int		texx;
 	int		texy;
 	double	step;
 	double	texpos;
+	double	*zbuffer;
 	t_data	*data;
 }	t_game;
 
@@ -142,18 +145,21 @@ typedef struct s_keys
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	t_map	*map;
-	t_game	*game;
-	t_img	*img;
-	t_keys	keys;
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_game		*game;
+	t_img		*img;
+	t_keys		keys;
+	t_sprite	*sprites;
+	int			num_sprites;
+	int			total_sprites;
 }	t_data;
 
 //check_map.c
 void	check_map(t_map *map, char *file);
 int		check_name(char *file);
-int		check_open(char *file);
+int		check_file_descriptor(char *file);
 void	ft_get_size_malloc(t_map *map);
 void	get_map_size(t_map *map, char *file);
 
@@ -169,7 +175,6 @@ void	player_init_helper1(double dx, double dy, t_data *data);
 void	player_init_helper2(double px, double py, t_data *data);
 void	allocate_textures(t_data *data);
 void	allocate_structures(t_data *data);
-
 
 //assest_check
 int		is_map_assets(char *line);
@@ -228,11 +233,13 @@ char	*ft_strdup_to_n(char *str);
 char	*ft_strcpy(char *dest, char *src);
 void	*ft_memset(void *s, int c, size_t n);
 int		is_map_assets(char *line);
+int		check_file_descriptor(char *file_path);
 
 // free.c
 void	free_images(t_map *map);
 void	free_tab(char **tab);
 void	free_and_exit(t_data *data);
+void	free_map_resources(t_map *map);
 void	ft_destroy_img(t_data *data);
 int		ft_escape(t_data *data);
 
@@ -255,7 +262,6 @@ void	handle_movement(t_data *data);
 int		ft_keyrelease(int key, t_data *data);
 int		ft_keypress(int key, t_data *data);
 
-
 //casting
 void	cast_rays(t_data *data);
 void	calculate_sidedist(t_game *game);
@@ -272,5 +278,8 @@ void	draw_column(t_game *game, int x);
 void	ft_xpm_to_image(t_data *data);
 void	ft_xpm_error(t_data *data);
 void	ft_get_addr(t_data *data);
+
+//math
+double	ft_fabs(double v);
 
 #endif

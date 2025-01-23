@@ -6,11 +6,11 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:13:00 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 15:22:10 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:38:45 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	draw_ceiling(t_game *game, int x)
 {

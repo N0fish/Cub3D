@@ -6,11 +6,11 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:14:38 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:15:16 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:47:39 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	player_init_helper1(double dx, double dy, t_data *data)
 {
@@ -66,6 +66,7 @@ void	allocate_textures(t_data *data)
 			free(data->img);
 			free_and_exit(data);
 		}
+		data->img->texture[i]->img_ptr = NULL;
 		i++;
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:43:29 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:16:16 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:21:12 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	get_map_images2(char *str, t_map *map)
 {
@@ -63,10 +63,10 @@ int	small_image_check(t_map *map)
 			|| !check_extension(map->east_wall)
 			|| !check_extension(map->west_wall)))
 		return (0);
-	if (open(map->north_wall, O_RDONLY) == -1
-		|| open(map->south_wall, O_RDONLY) == -1
-		|| open(map->west_wall, O_RDONLY) == -1
-		|| open(map->east_wall, O_RDONLY) == -1)
+	if (!check_file_descriptor(map->north_wall)
+		|| !check_file_descriptor(map->south_wall)
+		|| !check_file_descriptor(map->west_wall)
+		|| !check_file_descriptor(map->east_wall))
 		return (0);
 	return (1);
 }

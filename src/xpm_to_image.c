@@ -6,11 +6,11 @@
 /*   By: roarslan <roarslan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:17:43 by roarslan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:21:28 by roarslan         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:56:21 by roarslan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes.h"
+#include "includes.h"
 
 void	ft_get_addr(t_data *data)
 {
@@ -34,7 +34,9 @@ void	ft_xpm_error(t_data *data)
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
 	ft_destroy_img(data);
 	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->mlx)
+		free(data->mlx);
+	data->mlx = NULL;
 	free_and_exit(data);
 }
 
